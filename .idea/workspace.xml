@@ -1,7 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="5c2686d4-5cd8-4721-a09d-2594cd5ca7ca" name="Default" comment="" />
+    <list default="true" id="5c2686d4-5cd8-4721-a09d-2594cd5ca7ca" name="Default" comment="">
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/App.css" afterPath="$PROJECT_DIR$/src/App.css" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/App.js" afterPath="$PROJECT_DIR$/src/App.js" />
+    </list>
     <ignored path="$PROJECT_DIR$/.tmp/" />
     <ignored path="$PROJECT_DIR$/temp/" />
     <ignored path="$PROJECT_DIR$/tmp/" />
@@ -28,12 +32,26 @@
       <file leaf-file-name="App.js" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/App.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="349">
-              <caret line="72" column="182" lean-forward="true" selection-start-line="72" selection-start-column="182" selection-end-line="72" selection-end-column="182" />
+            <state relative-caret-position="417">
+              <caret line="126" column="0" lean-forward="true" selection-start-line="126" selection-start-column="0" selection-end-line="126" selection-end-column="0" />
               <folding>
                 <element signature="e#0#39#0" expanded="true" />
                 <element signature="n#!!block;n#submit#0;n#App#0" expanded="false" />
+                <element signature="n#!!block;n#createRadio#0;n#App#0" expanded="false" />
+                <element signature="n#!!block;n#checkOwner#0;n#App#0" expanded="false" />
+                <element signature="n#!!block;n#totalSupply#0;n#App#0" expanded="false" />
+                <element signature="n#!!block;n#changeCEO#0;n#App#0" expanded="false" />
               </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="App.css" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/App.css">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="345">
+              <caret line="23" column="0" lean-forward="true" selection-start-line="23" selection-start-column="0" selection-end-line="23" selection-end-column="0" />
+              <folding />
             </state>
           </provider>
         </entry>
@@ -77,10 +95,16 @@
       <find>players</find>
       <find>get</find>
       <find>lottery</find>
+      <find>createRadio</find>
+      <find>radioAddresses</find>
     </findStrings>
     <replaceStrings>
       <replace>celebs</replace>
+      <replace>radioInfo</replace>
     </replaceStrings>
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
@@ -88,6 +112,7 @@
         <option value="$PROJECT_DIR$/src/web3.js" />
         <option value="$PROJECT_DIR$/package.json" />
         <option value="$PROJECT_DIR$/src/lottery.js" />
+        <option value="$PROJECT_DIR$/src/App.css" />
         <option value="$PROJECT_DIR$/src/App.js" />
       </list>
     </option>
@@ -104,11 +129,12 @@
     <handled-path value="$PROJECT_DIR$/node_modules" />
   </component>
   <component name="ProjectFrameBounds">
-    <option name="x" value="403" />
+    <option name="x" value="334" />
     <option name="y" value="23" />
-    <option name="width" value="1253" />
+    <option name="width" value="1290" />
     <option name="height" value="947" />
   </component>
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
   <component name="ProjectView">
     <navigator currentView="ProjectPane" proportions="" version="1">
       <flattenPackages />
@@ -260,25 +286,25 @@
       <workItem from="1519317571853" duration="224000" />
       <workItem from="1519370912960" duration="12000" />
       <workItem from="1519382594797" duration="3241000" />
-      <workItem from="1519387079286" duration="9500000" />
+      <workItem from="1519387079286" duration="15894000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="23662000" />
+    <option name="totallyTimeSpent" value="30056000" />
   </component>
   <component name="ToolWindowManager">
-    <frame x="403" y="23" width="1253" height="947" extended-state="0" />
+    <frame x="334" y="23" width="1290" height="947" extended-state="0" />
     <editor active="true" />
     <layout>
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.14610389" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.14184397" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
-      <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="npm" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
       <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
-      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.32982457" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32982457" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
       <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
@@ -316,6 +342,10 @@
           <folding>
             <element signature="e#0#39#0" expanded="true" />
             <element signature="n#!!block;n#submit#0;n#App#0" expanded="false" />
+            <element signature="n#!!block;n#createRadio#0;n#App#0" expanded="false" />
+            <element signature="n#!!block;n#checkOwner#0;n#App#0" expanded="false" />
+            <element signature="n#!!block;n#totalSupply#0;n#App#0" expanded="false" />
+            <element signature="n#!!block;n#changeCEO#0;n#App#0" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -353,6 +383,10 @@
           <folding>
             <element signature="e#0#39#0" expanded="true" />
             <element signature="n#!!block;n#submit#0;n#App#0" expanded="false" />
+            <element signature="n#!!block;n#createRadio#0;n#App#0" expanded="false" />
+            <element signature="n#!!block;n#checkOwner#0;n#App#0" expanded="false" />
+            <element signature="n#!!block;n#totalSupply#0;n#App#0" expanded="false" />
+            <element signature="n#!!block;n#changeCEO#0;n#App#0" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -390,6 +424,10 @@
           <folding>
             <element signature="e#0#39#0" expanded="true" />
             <element signature="n#!!block;n#submit#0;n#App#0" expanded="false" />
+            <element signature="n#!!block;n#createRadio#0;n#App#0" expanded="false" />
+            <element signature="n#!!block;n#checkOwner#0;n#App#0" expanded="false" />
+            <element signature="n#!!block;n#totalSupply#0;n#App#0" expanded="false" />
+            <element signature="n#!!block;n#changeCEO#0;n#App#0" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -445,6 +483,10 @@
           <folding>
             <element signature="e#0#39#0" expanded="true" />
             <element signature="n#!!block;n#submit#0;n#App#0" expanded="false" />
+            <element signature="n#!!block;n#createRadio#0;n#App#0" expanded="false" />
+            <element signature="n#!!block;n#checkOwner#0;n#App#0" expanded="false" />
+            <element signature="n#!!block;n#totalSupply#0;n#App#0" expanded="false" />
+            <element signature="n#!!block;n#changeCEO#0;n#App#0" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -482,6 +524,10 @@
           <folding>
             <element signature="e#0#39#0" expanded="true" />
             <element signature="n#!!block;n#submit#0;n#App#0" expanded="false" />
+            <element signature="n#!!block;n#createRadio#0;n#App#0" expanded="false" />
+            <element signature="n#!!block;n#checkOwner#0;n#App#0" expanded="false" />
+            <element signature="n#!!block;n#totalSupply#0;n#App#0" expanded="false" />
+            <element signature="n#!!block;n#changeCEO#0;n#App#0" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -519,6 +565,10 @@
           <folding>
             <element signature="e#0#39#0" expanded="true" />
             <element signature="n#!!block;n#submit#0;n#App#0" expanded="false" />
+            <element signature="n#!!block;n#createRadio#0;n#App#0" expanded="false" />
+            <element signature="n#!!block;n#checkOwner#0;n#App#0" expanded="false" />
+            <element signature="n#!!block;n#totalSupply#0;n#App#0" expanded="false" />
+            <element signature="n#!!block;n#changeCEO#0;n#App#0" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -557,13 +607,25 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/src/App.css">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="345">
+          <caret line="23" column="0" lean-forward="true" selection-start-line="23" selection-start-column="0" selection-end-line="23" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/src/App.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="349">
-          <caret line="72" column="182" lean-forward="true" selection-start-line="72" selection-start-column="182" selection-end-line="72" selection-end-column="182" />
+        <state relative-caret-position="417">
+          <caret line="126" column="0" lean-forward="true" selection-start-line="126" selection-start-column="0" selection-end-line="126" selection-end-column="0" />
           <folding>
             <element signature="e#0#39#0" expanded="true" />
             <element signature="n#!!block;n#submit#0;n#App#0" expanded="false" />
+            <element signature="n#!!block;n#createRadio#0;n#App#0" expanded="false" />
+            <element signature="n#!!block;n#checkOwner#0;n#App#0" expanded="false" />
+            <element signature="n#!!block;n#totalSupply#0;n#App#0" expanded="false" />
+            <element signature="n#!!block;n#changeCEO#0;n#App#0" expanded="false" />
           </folding>
         </state>
       </provider>

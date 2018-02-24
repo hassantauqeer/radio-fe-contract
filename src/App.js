@@ -8,10 +8,21 @@ const Eth = require('ethjs-query')
 class App extends Component {
     state = {
         manager: '',
+        ceo: '',
+        coo: '',
+        totalRadios: '',
+        name: '',
+        symbol: '',
+        currentMetaMaskAcc: '',
         players: '',
         balance: '',
         price: '1',
+        newRadioName: '',
+        newRadioAddress: '',
+        newRadioPrice: '',
+        radioInfo: [],
         ownerOf: "",
+        purchaseRadioId: "",
         value: "hassan",
         ethAddress: "0xBD0Fa6D9962Aa6C63c5beFF163b0CA396b41B8F6"
     }
@@ -22,12 +33,29 @@ class App extends Component {
         const accounts = await web3.eth.getAccounts();
         console.log(accounts[0])
 
+        const n = await celebs.methods.NAME().call();
+        const s = await celebs.methods.SYMBOL().call();
         const x = await celebs.methods.ceoAddress().call();
         const y = await celebs.methods.cooAddress().call();
-        console.log(x, y)
+        const totalRadios = await celebs.methods.totalSupply().call();
+        var radioInfo = [];
+        for (var i=0; i<totalRadios; i++) {
+            var radio = await celebs.methods.getPerson(i).call();
+            radioInfo.push(radio);
+        }
+        this.setState({
+            ceo: x,
+            coo: y,
+            name: n,
+            symbol: s,
+            currentMetaMaskAcc: accounts[0],
+            totalRadios,
+            radioInfo
+        })
+        console.log(radioInfo)
 
-        const person = await celebs.methods.totalSupply().call({gas: '4712388', from: accounts[0]});
-        console.log(person)
+        // const person = await celebs.methods.totalSupply().call({gas: '4712388', from: this.state.currentMetaMaskAcc});
+        // console.log(person)
         // this.setState({ balance })
         // const sym = await celebs.methods.symbol().call();
         // console.log(celebs.methods)
@@ -62,17 +90,11 @@ class App extends Component {
         // this.setState({ message: "Success" })
     }
 
-    async createRadio() {
-        const accounts = await web3.eth.getAccounts();
-        console.log(accounts[0])
-        const sym = await celebs.methods.symbol().call({
-            from: accounts[0]
-        });
-        console.log(sym, accounts[0])
+    async createRadio(evt) {
+        evt.preventDefault();
         // console.log(this.state.ethAddress, this.state.value, web3.utils.toWei(this.state.price, 'ether'))
-        const red = await celebs.methods.createPromoPerson("0x2e02eded04cfc8b1da8fdbc2437a4f2bfc6bbbe6", "abc", web3.utils.toWei(this.state.price, 'ether')).call({from: accounts[0]})
-        console.log(red)
-        // evt.preventDefault();
+        const res = await celebs.methods.createPromoPerson(this.state.newRadioAddress, this.state.newRadioName, web3.utils.toWei(this.state.newRadioPrice, 'ether')).send({gas: '4712388', from: this.state.currentMetaMaskAcc})
+        console.log(res)
         //
         // const sym = await celebs.methods.purchase(0).send({
         //     from: "0x87703192d36A818FeB8fD334D1b593f358f0724C",
@@ -96,40 +118,55 @@ class App extends Component {
         console.log(am)
     }
 
+    async changeCEO (){
+        const res = await celebs.methods.setCEO(this.state.newCeo).send({gas: '4712388', from: this.state.currentMetaMaskAcc});
+        console.log(res, 'change CEO')
+    }
 
+    async purchaseRadio() {
+
+    }
 
     render() {
         // web3.eth.getAccounts().then(console.log)
         return (
             <div>
-                <h1>Lotter Contract</h1>
-                <p>this is my contract manager address {this.state.manager}</p>
-                <p>this is my contract manager address {this.state.players}</p>
-                <p>this is my contract manager address {web3.utils.fromWei(this.state.balance, 'ether')}</p>
-                <hr/>
-                <p>Amount of ehter to enter: </p>
-                <input placeholder="name" value={this.state.value} onChange={(evt) => {
-                    this.setState({value: evt.target.value})
-                }}/>
-                <input placeholder="ethAddress" value={this.state.ethAddress} onChange={(evt) => {
-                    this.setState({ethAddress: evt.target.value})
-                }}/>
-                <button onClick={this.submit.bind(this)}>Submit</button>
+                <h1>RadioLit Contract</h1>
+                <p>Contract <b>Name:</b> {this.state.name}</p>
+                <p>Contract <b>Symbol:</b> {this.state.symbol}</p>
+
+                <p>Contract <b>CEO:</b> {this.state.ceo}</p>
+                <input value={this.state.newCeo} onChange={(evt) => {this.setState({newCeo: evt.target.value})}}/> <button onClick={this.changeCEO.bind(this)}>Change CEO</button>
+
+                <p>Contract <b>COO:</b> {this.state.coo}</p>
+                <p>Number of <b>Total Radios:</b> {this.state.totalRadios}</p>
+
+                <p><i>Current <b>MetaMask</b> Account: </i> {this.state.currentMetaMaskAcc}</p>
+                {/*<p>this is my contract manager address {web3.utils.fromWei(this.state.balance, 'ether')}</p>*/}
+                {/*<hr/>*/}
+                {/*<p>Amount of ehter to enter: </p>*/}
+                {/*<input placeholder="name" value={this.state.value} onChange={(evt) => {*/}
+                    {/*this.setState({value: evt.target.value})*/}
+                {/*}}/>*/}
+                {/*<input placeholder="ethAddress" value={this.state.ethAddress} onChange={(evt) => {*/}
+                    {/*this.setState({ethAddress: evt.target.value})*/}
+                {/*}}/>*/}
+                {/*<button onClick={this.submit.bind(this)}>Submit</button>*/}
                 <br/>
                 <br/>
                 <hr/>
                 <br/>
                 <br/>
 
-                <p>Creaate radio station: </p>
-                <input placeholder="name" value={this.state.value} onChange={(evt) => {
-                    this.setState({value: evt.target.value})
+                <h3>Create Radio Station: </h3>
+                <input type="text" placeholder="Radio Name" value={this.state.newRadioName} onChange={(evt) => {
+                    this.setState({newRadioName: evt.target.value})
                 }}/>
-                <input placeholder="ethAddress" value={this.state.ethAddress} onChange={(evt) => {
-                    this.setState({ethAddress: evt.target.value})
+                <input type="text" placeholder="Eth Address" value={this.state.newRadioAddress} onChange={(evt) => {
+                    this.setState({newRadioAddress: evt.target.value})
                 }}/>
-                <input type="number" placeholder="price" value={this.state.price} onChange={(evt) => {
-                    this.setState({price: evt.target.value})
+                <input type="number" placeholder="Radio Price in ETH" value={this.state.newRadioPrice} onChange={(evt) => {
+                    this.setState({newRadioPrice: evt.target.value})
                 }}/>
                 <button onClick={this.createRadio.bind(this)}>Create Radio</button>
 
@@ -137,13 +174,49 @@ class App extends Component {
                 <hr/>
                 <br/>
 
-                <input value={this.state.ownerOf} onChange={(evt) => {
-                    this.setState({ownerOf: evt.target.value})
-                }}/>
-                <button onClick={this.checkOwner.bind(this)}>Purchase</button>
-                <button onClick={this.totalSupply.bind(this)}>Total Supply</button>
+                {/*<input value={this.state.ownerOf} onChange={(evt) => {*/}
+                    {/*this.setState({ownerOf: evt.target.value})*/}
+                {/*}}/>*/}
+                {/*<button onClick={this.checkOwner.bind(this)}>Purchase</button>*/}
+                {/*<button onClick={this.totalSupply.bind(this)}>Total Supply</button>*/}
 
+                <br/>
+                <br/>
+                {/*<hr/>*/}
+                <br/>
+                <br/>
 
+                <h3>All Radios</h3>
+                <br/>
+
+                <table>
+                    <tbody>
+                        <tr>
+                            <th>Radio Name</th>
+                            <th>Selling Price</th>
+                            <th>Owner</th>
+                        </tr>
+                            {
+                                this.state.radioInfo.map(function (radio) {
+                                    return(
+                                        <tr key={radio.owner}>
+                                            <td>{radio.personName}</td>
+                                            <td>{web3.utils.fromWei(radio.sellingPrice, 'ether')}</td>
+                                            <td>{radio.owner}</td>
+                                        </tr>
+                                    )
+                                })
+                            }
+                    </tbody>
+                </table>
+                <hr/>
+                <br/>
+                <br/>
+
+                <h3>Purchase a Radio</h3>
+                <br/>
+                <input value={this.state.purchaseRadioId} onChange={(evt) => {this.setState({purchaseRadioId: evt.target.value})}}/>
+                <button onClick={this.purchaseRadio.bind(this)}>Purchase</button>
             </div>
         );
     }
