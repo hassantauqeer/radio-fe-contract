@@ -23,13 +23,14 @@ class App extends Component {
         radioInfo: [],
         ownerOf: "",
         purchaseRadioId: "",
+        purchaseValue: "",
         value: "hassan",
         ethAddress: "0xBD0Fa6D9962Aa6C63c5beFF163b0CA396b41B8F6"
     }
 
     async componentDidMount() {
         // const balance = await web3.eth.getBalance(celebs.options.address);
-        console.log(celebs.methods)
+        console.log(celebs.methods.purchase)
         const accounts = await web3.eth.getAccounts();
         console.log(accounts[0])
 
@@ -124,7 +125,13 @@ class App extends Component {
     }
 
     async purchaseRadio() {
-
+        console.log(this.state.purchaseRadioId, this.state.purchaseValue, parseInt(this.state.purchaseRadioId))
+        const res = await celebs.methods.purchase(parseInt(this.state.purchaseRadioId)).send({
+            gas: '4712388',
+            from: this.state.currentMetaMaskAcc,
+            value: web3.utils.toWei(this.state.purchaseValue, 'ether')
+        })
+        console.log(res)
     }
 
     render() {
@@ -192,14 +199,16 @@ class App extends Component {
                 <table>
                     <tbody>
                         <tr>
+                            <th>Radio ID</th>
                             <th>Radio Name</th>
                             <th>Selling Price</th>
                             <th>Owner</th>
                         </tr>
                             {
-                                this.state.radioInfo.map(function (radio) {
+                                this.state.radioInfo.map(function (radio, index) {
                                     return(
-                                        <tr key={radio.owner}>
+                                        <tr key={index}>
+                                            <td>{index}</td>
                                             <td>{radio.personName}</td>
                                             <td>{web3.utils.fromWei(radio.sellingPrice, 'ether')}</td>
                                             <td>{radio.owner}</td>
@@ -215,7 +224,8 @@ class App extends Component {
 
                 <h3>Purchase a Radio</h3>
                 <br/>
-                <input value={this.state.purchaseRadioId} onChange={(evt) => {this.setState({purchaseRadioId: evt.target.value})}}/>
+                <input placeholder="Radio ID" value={this.state.purchaseRadioId} onChange={(evt) => {this.setState({purchaseRadioId: evt.target.value})}}/>
+                <input placeholder="Price" value={this.state.purchaseValue} onChange={(evt) => {this.setState({purchaseValue: evt.target.value})}}/>
                 <button onClick={this.purchaseRadio.bind(this)}>Purchase</button>
             </div>
         );
