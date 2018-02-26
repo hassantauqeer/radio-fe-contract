@@ -6,33 +6,37 @@ const Eth = require('ethjs-query')
 // const EthContract = require('ethjs-contract')
 
 class App extends Component {
-    state = {
-        manager: '',
-        ceo: '',
-        coo: '',
-        totalRadios: '',
-        name: '',
-        symbol: '',
-        currentMetaMaskAcc: '',
-        players: '',
-        balance: '',
-        price: '1',
-        newRadioName: '',
-        newRadioAddress: '',
-        newRadioPrice: '',
-        radioInfo: [],
-        ownerOf: "",
-        purchaseRadioId: "",
-        purchaseValue: "",
-        value: "hassan",
-        ethAddress: "0xBD0Fa6D9962Aa6C63c5beFF163b0CA396b41B8F6"
+    constructor(props) {
+        super(props);
+        this.state = {
+            manager: '',
+            ceo: '',
+            coo: '',
+            totalRadios: '',
+            name: '',
+            symbol: '',
+            currentMetaMaskAcc: '',
+            players: '',
+            balance: '',
+            price: '1',
+            newRadioName: '',
+            newRadioAddress: '',
+            newRadioPrice: '',
+            radioInfo: [],
+            ownerOf: "",
+            purchaseRadioId: "",
+            purchaseValue: "",
+            value: "hassan",
+            ethAddress: "0xBD0Fa6D9962Aa6C63c5beFF163b0CA396b41B8F6"
+        }
+        this.purchaseRadio = this.purchaseRadio.bind(this);
     }
 
     async componentDidMount() {
         // const balance = await web3.eth.getBalance(celebs.options.address);
-        console.log(celebs.methods.purchase)
+        // console.log(celebs.methods.purchase)
         const accounts = await web3.eth.getAccounts();
-        console.log(accounts[0])
+        // console.log(accounts[0])
 
         const n = await celebs.methods.NAME().call();
         const s = await celebs.methods.SYMBOL().call();
@@ -53,7 +57,7 @@ class App extends Component {
             totalRadios,
             radioInfo
         })
-        console.log(radioInfo)
+        // console.log(radioInfo)
 
         // const person = await celebs.methods.totalSupply().call({gas: '4712388', from: this.state.currentMetaMaskAcc});
         // console.log(person)
@@ -124,17 +128,18 @@ class App extends Component {
         console.log(res, 'change CEO')
     }
 
-    async purchaseRadio() {
-        console.log(this.state.purchaseRadioId, this.state.purchaseValue, parseInt(this.state.purchaseRadioId))
-        const res = await celebs.methods.purchase(parseInt(this.state.purchaseRadioId)).send({
+    async purchaseRadio(id, address, price) {
+        console.log(id, price, address)
+        const res = await celebs.methods.purchase(parseInt(id)).send({
             gas: '4712388',
             from: this.state.currentMetaMaskAcc,
-            value: web3.utils.toWei(this.state.purchaseValue, 'ether')
+            value: price
         })
         console.log(res)
     }
 
     render() {
+        var self = this;
         // web3.eth.getAccounts().then(console.log)
         return (
             <div>
@@ -203,6 +208,7 @@ class App extends Component {
                             <th>Radio Name</th>
                             <th>Selling Price</th>
                             <th>Owner</th>
+                            <th>Purchase</th>
                         </tr>
                             {
                                 this.state.radioInfo.map(function (radio, index) {
@@ -212,6 +218,9 @@ class App extends Component {
                                             <td>{radio.personName}</td>
                                             <td>{web3.utils.fromWei(radio.sellingPrice, 'ether')}</td>
                                             <td>{radio.owner}</td>
+                                            <td>
+                                                <button onClick={self.purchaseRadio.bind(this, index, radio.owner, radio.sellingPrice)}>Purchase</button>
+                                            </td>
                                         </tr>
                                     )
                                 })
@@ -222,11 +231,11 @@ class App extends Component {
                 <br/>
                 <br/>
 
-                <h3>Purchase a Radio</h3>
-                <br/>
-                <input placeholder="Radio ID" value={this.state.purchaseRadioId} onChange={(evt) => {this.setState({purchaseRadioId: evt.target.value})}}/>
-                <input placeholder="Price" value={this.state.purchaseValue} onChange={(evt) => {this.setState({purchaseValue: evt.target.value})}}/>
-                <button onClick={this.purchaseRadio.bind(this)}>Purchase</button>
+                {/*<h3>Purchase a Radio</h3>*/}
+                {/*<br/>*/}
+                {/*<input placeholder="Radio ID" value={this.state.purchaseRadioId} onChange={(evt) => {this.setState({purchaseRadioId: evt.target.value})}}/>*/}
+                {/*<input placeholder="Price" value={this.state.purchaseValue} onChange={(evt) => {this.setState({purchaseValue: evt.target.value})}}/>*/}
+                {/*<button onClick={this.purchaseRadio.bind(this)}>Purchase</button>*/}
             </div>
         );
     }
